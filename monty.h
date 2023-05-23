@@ -1,6 +1,8 @@
 #ifndef MONTY_H
 #define MONTY_H
 
+#define _GNU_SOURCE
+
 #include <stdio.h>
 #include <unistd.h>
 #include <fcntl.h>
@@ -41,5 +43,12 @@ typedef struct instruction_s
 	char *opcode;
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
+
+
+/* function prototypes */
+void push(stack_t **head, int n);
+void pall(const stack_t *head);
+void pint(const stack_t *head);
+void pop(const stack_t *head);
 
 #endif

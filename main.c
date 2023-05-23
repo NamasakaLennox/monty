@@ -1,4 +1,3 @@
-#define _GNU_SOURCE
 #include "monty.h"
 
 int main(int argc, char **argv)
@@ -34,5 +33,8 @@ int main(int argc, char **argv)
 }
 
 /* notes *
+ * so far global variable is the element to add or the head of list
  * create separate functions for errors
+ * split tokens - commands and path
+ * create function to check for necessary operation
  */

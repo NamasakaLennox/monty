@@ -2,10 +2,11 @@
 
 /* haven't handled errors yet */
 /* edit functions to comply with prototype */
-void push(stack_t **head, int n)
+void push(stack_t **head, unsigned int line_number)
 {
 	stack_t *new;
 
+	(void)line_number;
 	if (!head)
 		return;
 	new = malloc(sizeof(dlistint_t));
@@ -20,10 +21,11 @@ void push(stack_t **head, int n)
 	*head = new;
 }
 
-void pall(const stack_t *head)
+void pall(const stack_t *head, unsigned int line_number)
 {
 	stack_t *temp = (stack_t *)head;
 
+	(void)line_number;
 	if (head == NULL)
 		return;
 	while (temp)
@@ -33,8 +35,9 @@ void pall(const stack_t *head)
 	}
 }
 
-void pint(const stack_t *head)
+void pint(const stack_t *head, unsigned int line_number)
 {
+	(void)line_number;
 	if (head == NULL)
 	{
 		/* print error */
@@ -43,10 +46,11 @@ void pint(const stack_t *head)
 	printf("%d\n", head->n);
 }
 
-void pop(const stack_t *head)
+void pop(const stack_t *head, unsigned int line_number)
 {
 	stack_t *temp;
 
+	(void)line_number;
         if (head == NULL)
         {
                 /* print error */

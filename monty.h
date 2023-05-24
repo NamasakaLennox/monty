@@ -46,9 +46,9 @@ typedef struct instruction_s
 
 
 /* function prototypes */
-void push(stack_t **head, int n);
-void pall(const stack_t *head);
-void pint(const stack_t *head);
-void pop(const stack_t *head);
+void push(stack_t **head, unsigned int line_number);
+void pall(const stack_t *head, unsigned int line_number);
+void pint(const stack_t *head, unsigned int line_number);
+void pop(const stack_t *head, unsigned int line_number);
 
 #endif

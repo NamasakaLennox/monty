@@ -40,6 +40,8 @@ void sub(stack_t **head, unsigned int line)
  */
 void div(stack_t **head, unsigned int line)
 {
+	unsigned int quotient;
+
 	/* if list is empty */
 	if (!(*head))
 	{
@@ -52,6 +54,17 @@ void div(stack_t **head, unsigned int line)
 		fprintf(stderr, "L%d: can't div, stack too short\n", line);
 		exit(EXIT_FAILURE);
 	}
+	if ((*head)->n == 0)
+	{
+		fprintf(stderr, "L%d: division by zero\n", line);
+		exit(EXIT_FAILURE);
+	}
+
+	quotient = (*head)->next->n / (*head)->n;
+
+	pop(head, line);
+	pop(head, line);
+	push(head, quotient);
 }
 
 void mul(stack_t **head, unsigned int line)

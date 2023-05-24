@@ -12,7 +12,8 @@ void check_opcode(char *line_read, stack_t **head, unsigned int line)
 {
 	char **command;
 	instruction_t op[] = {
-		{"push", push}, {"pall", pall}, {"pint", pint}, {NULL, NULL}
+		{"push", push}, {"pall", pall}, {"pint", pint}, {"pop", pop},
+		{NULL, NULL}
 	};
 	int i = 0, j, flag = 0, len1, len2;
 

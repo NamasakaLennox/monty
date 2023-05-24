@@ -50,6 +50,7 @@ void push(stack_t **head, unsigned int num);
 void push_check(stack_t **head, char **command, unsigned int line);
 void pall(stack_t **head, unsigned int line);
 void pint(stack_t **head, unsigned int line);
+void pop(stack_t **head, unsigned int line);
 
 /* other functions */
 int _isdigit(int c);

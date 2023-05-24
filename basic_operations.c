@@ -22,3 +22,32 @@ void pint(stack_t **head, unsigned int line)
 	/* print top element */
 	printf("%d\n", (*head)->n);
 }
+
+/**
+ * pop - removes the top element in the list
+ * @head: the top element in the list
+ * @line: the current line of the current command
+ */
+void pop(stack_t **head, unsigned int line)
+{
+	stack_t *temp;
+
+	temp = *head;
+	if (!temp)
+	{
+		fprintf(stderr, "L%d: can't pop an empty stack\n", line);
+		exit(EXIT_FAILURE);
+	}
+
+	if (temp->next == NULL)
+	{
+		*head = NULL;
+		free(temp);
+	}
+	else
+	{
+		*head = (*head)->next;
+		(*head)->prev = NULL;
+		free(temp);
+	}
+}

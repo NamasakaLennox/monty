@@ -1,52 +1,44 @@
 #include "monty.h"
 
-void handle_exec(char *string, size_t line_number)
-{
-	instruction_t st[] = {
-		{"pall", pall}, {"pint", pint},
-		{"push", push}, {"pop", pop},
-		{"null", NULL}
-	};
-
-	swit
-}
-
+/**
+ * main - the driver function of the program
+ * @argc: the number of arguments provided
+ * @argv: string of arguments provided
+ *
+ * Return: returns 0 on success
+ */
 int main(int argc, char **argv)
 {
 	FILE *f_open;
-        char *line_read = NULL;
-        size_t len = 0, line_number = 0;
-	ssize_t chars_read;
+	char *line_read = NULL;
+	size_t len = 0, line_number = 0;
+	stack_t *head = NULL;
 
-	/* remember to change errors to use strlen */
+	/* if invalid number of arguments provided */
 	if (argc != 2)
 	{
-		write(STDERR_FILENO, "USAGE: monty file\n", 18);
+		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
+	/* open file as read only */
 	f_open = fopen(argv[1], "r");
-	if (!f_open)
+	if (!f_open) /* if failed to open file */
 	{
-		/* remember to tokenize path and print file name */
-		write(STDERR_FILENO, "Error: Can't open file <file>\n", 30);
+		/* prints file name entered */
+		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
-	while ((chars_read = getline(&line_read, &len, f_open)) != -1)
+	/* read the file line by line */
+	while (getline(&line_read, &len, f_open) != -1)
 	{
 		line_number++;
-		handle_exec(line_read, line_number);
+		if (line_read[0] != '#')
+			check_opcode(line_read, &head, line_number);
 	}
 
 	fclose(f_open);
 	if (line_read)
 		free(line_read);
-
+	free_stack(&head);
 	return (0);
 }
-
-/* notes *
- * so far global variable is a struct of global variables
- * create separate functions for errors
- * split tokens - commands and path
- * create function to check for necessary operation
- */

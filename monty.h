@@ -3,15 +3,14 @@
 
 #define _GNU_SOURCE
 
-#include <stdio.h>
-#include <unistd.h>
-#include <fcntl.h>
 #include <sys/types.h>
-#include <errno.h>
-#include <stdlib.h>
-#include <sys/wait.h>
 #include <sys/stat.h>
-#include <limits.h>
+#include <fcntl.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <stdio.h>
+#include <string.h>
+
 
 /* structs to use */
 /**
@@ -45,10 +44,16 @@ typedef struct instruction_s
 } instruction_t;
 
 
-/* function prototypes */
-void push(stack_t **head, unsigned int line_number);
-void pall(const stack_t *head, unsigned int line_number);
-void pint(const stack_t *head, unsigned int line_number);
-void pop(const stack_t *head, unsigned int line_number);
+/* operation function prototypes */
+void check_opcode(char *line_read, stack_t **head, unsigned int line);
+void push(stack_t **head, unsigned int num);
+void push_check(stack_t **head, char **command, unsigned int line);
+void pall(stack_t **head, unsigned int line);
+
+
+/* other functions */
+int _isdigit(int c);
+void free_stack(stack_t **head);
+char **split_token(char *line_read);
 
 #endif

@@ -52,6 +52,8 @@ void pall(stack_t **head, unsigned int line);
 void pint(stack_t **head, unsigned int line);
 void pop(stack_t **head, unsigned int line);
 void swap(stack_t **head, unsigned int line);
+void add(stack_t **head, unsigned int line);
+void nop(stack_t **head, unsigned int line);
 
 /* other functions */
 int _isdigit(int c);

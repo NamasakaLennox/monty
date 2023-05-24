@@ -32,13 +32,13 @@ void sub(stack_t **head, unsigned int line)
 }
 
 /**
- * div - divides the top two elements on a stack
+ * division - divides the top two elements on a stack
  * @head: the top element on the stack
  * @line: the line number of the current command
  * Description: the result is stored in the second element and the top element
  * is removed
  */
-void div(stack_t **head, unsigned int line)
+void division(stack_t **head, unsigned int line)
 {
 	unsigned int quotient;
 
@@ -124,5 +124,15 @@ void mod(stack_t **head, unsigned int line)
 	}
 
 	/* division by zero */
-	if(mod
+	if ((*head)->n == 0)
+	{
+		fprintf(stderr, "L%d: division by zero\n", line);
+		exit(EXIT_FAILURE);
+	}
+
+	rem = (*head)->next->n % (*head)->n;
+
+	pop(head, line);
+	pop(head, line);
+	push(head, rem);
 }

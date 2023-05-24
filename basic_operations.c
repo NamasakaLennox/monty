@@ -85,6 +85,8 @@ void swap(stack_t **head, unsigned int line)
  * add - adds the top two elements on the stack
  * @head: the top element on the stack
  * @line: the line containing the current command
+ * Description: the result is stored in the second element of the stack and the
+ * top element is removed
  */
 void add(stack_t **head, unsigned int line)
 {

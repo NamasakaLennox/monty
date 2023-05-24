@@ -55,6 +55,12 @@ void swap(stack_t **head, unsigned int line);
 void add(stack_t **head, unsigned int line);
 void nop(stack_t **head, unsigned int line);
 
+/* advanced tasks operations */
+void sub(stack_t **head, unsigned int line);
+void div(stack_t **head, unsigned int line);
+void mul(stack_t **head, unsigned int line);
+void mod(stack_t **head, unsigned int line);
+
 /* other functions */
 int _isdigit(int c);
 void free_stack(stack_t **head);

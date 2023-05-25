@@ -61,6 +61,7 @@ void division(stack_t **head, unsigned int line);
 void mul(stack_t **head, unsigned int line);
 void mod(stack_t **head, unsigned int line);
 void pchar(stack_t **head, unsigned int line);
+void pstr(stack_t **head, unsigned int line);
 
 /* other functions */
 int _isdigit(int c);

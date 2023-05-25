@@ -27,3 +27,25 @@ void pchar(stack_t **head, unsigned int line)
 		exit(EXIT_FAILURE);
 	}
 }
+
+/**
+ * pstr - prints the string starting from top of stack
+ * @head: the top element of the stack
+ * @line: the line number of the current command
+ */
+void pstr(stack_t **head, unsigned int line)
+{
+	stack_t *temp;
+
+	(void)line;
+
+	temp = *head;
+	while (temp)
+	{
+		if (temp->n > 127 || temp->n <= 0)
+			break;
+		putchar(temp->n);
+		temp = temp->next;
+	}
+	putchar('\n');
+}

@@ -18,12 +18,15 @@ void check_opcode(char *line_read, stack_t **head, unsigned int line)
 	};
 	int i = 0, j, flag = 0, len1, len2;
 
-	/* split the command */
-	command = split_token(line_read);
-	while (command[i]) /* check for operation */
+	command = split_token(line_read); /* split the command */
+	for (; command[i]; i++) /* check for operation */
 	{
-		j = 0;
-		while (op[j].opcode)
+		if (command[i][0] == '#')
+		{
+			i++;
+			continue;
+		}
+		for (j = 0; op[j].opcode; j++)
 		{
 			len1 = strlen(op[j].opcode);
 			len2 = strlen(command[i]);
@@ -37,17 +40,14 @@ void check_opcode(char *line_read, stack_t **head, unsigned int line)
 					op[j].f(head, line);
 				break;
 			}
-			j++;
 		}
 		if (flag == 0) /* if command was not found */
 		{
 			fprintf(stderr, "L%d: unknown instruction %s\n", line,
 				command[i]);
-			free(command);
-			free_stack(head);
+			free(command), free_stack(head);
 			exit(EXIT_FAILURE);
 		}
-		i++;
 	}
 	free(command);
 }

@@ -14,7 +14,8 @@ void check_opcode(char *line_read, stack_t **head, unsigned int line)
 	instruction_t op[] = {
 		{"push", push}, {"pall", pall}, {"pint", pint}, {"pop", pop},
 		{"swap", swap}, {"add", add}, {"nop", nop}, {"sub", sub},
-		{"div", division}, {"mul", mul}, {"mod", mod}, {NULL, NULL}
+		{"div", division}, {"mul", mul}, {"mod", mod}, {"pchar", pchar},
+		{NULL, NULL}
 	};
 	int i = 0, j, flag = 0, len1, len2;
 
@@ -45,8 +46,7 @@ void check_opcode(char *line_read, stack_t **head, unsigned int line)
 		{
 			fprintf(stderr, "L%d: unknown instruction %s\n", line,
 				command[i]);
-			free(command), free_stack(head);
-			exit(EXIT_FAILURE);
+			free(command), free_stack(head), exit(EXIT_FAILURE);
 		}
 	}
 	free(command);

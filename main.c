@@ -32,7 +32,6 @@ int main(int argc, char **argv)
 	while (getline(&line_read, &len, f_open) != -1)
 	{
 		line_number++;
-		/* if (line_read[0] != '#') */
 		check_opcode(line_read, &head, line_number);
 	}
 

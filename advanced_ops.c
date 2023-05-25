@@ -80,3 +80,32 @@ void rotl(stack_t **head, unsigned int line)
 	/* change head to previous second element */
 	(*head) = new_head;
 }
+
+/**
+ * rotr - rotates the stack to the bottom
+ * @head: the top of the stack
+ * @line: the current line number
+ * Description: the last element of the stack becomes the top element
+ */
+void rotr(stack_t **head, unsigned int line)
+{
+	stack_t *temp;
+
+	(void)line;
+	if (*head == NULL)
+		return;
+	if ((*head)->next == NULL)
+		return;
+
+	/* I'll try using push and pop if it fails */
+	/* find last element */
+	while(temp->next)
+		temp = temp->next;
+	/* make the list cyclic and split before the last element to rotate */
+	temp->next = *head;
+	temp->prev->next = NULL;
+	temp->prev = NULL;
+	(*head)->prev = temp;
+	/* change head to new head */
+	*head = temp;
+}

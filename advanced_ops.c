@@ -10,17 +10,20 @@ void pchar(stack_t **head, unsigned int line)
 
 	if (!(*head))
 	{
+		/* need to free command */
 		fprintf(stderr, "L%d: can't pchar, stack empty\n", line);
+		free_stack(head);
 		exit(EXIT_FAILURE);
 	}
 
 	ascii = (*head)->n;
-	if (ascii >= 32 && ascii <= 127)
+	if (ascii >= 0 && ascii <= 127)
 		printf("%c\n", ascii);
 	else
 	{
 		fprintf(stderr, "L%d: can't pchar, value out of range,\n",
 			line);
+		free_stack(head);
 		exit(EXIT_FAILURE);
 	}
 }

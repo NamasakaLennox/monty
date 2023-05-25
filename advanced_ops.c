@@ -49,3 +49,34 @@ void pstr(stack_t **head, unsigned int line)
 	}
 	putchar('\n');
 }
+
+/**
+ * rotl - rotates the stack at the top
+ * @head: the top of the stack
+ * @line: the line number of current command
+ * Description: the top element of the stack becomes the last element and the
+ * second one becomes the new head
+ */
+void rotl(stack_t **head, unsigned int line)
+{
+	stack_t *temp = *head, *new_head;
+
+	(void)line;
+	if (!(*head))
+		return;
+	if ((*head)->next == NULL)
+		return;
+
+	new_head = (*head)->next;
+	new_head->prev = NULL;
+
+	/* find last element */
+	while(temp->next)
+		temp = temp->next;
+
+	temp->next = *head;
+	(*head)->next = NULL;
+	(*head)->prev = temp;
+	/* change head to previous second element */
+	(*head) = new_head;
+}

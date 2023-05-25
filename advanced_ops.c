@@ -15,7 +15,7 @@ void pchar(stack_t **head, unsigned int line)
 	}
 
 	ascii = (*head)->n;
-	if (ascii >= 0 && ascii <= 127)
+	if (ascii >= 32 && ascii <= 127)
 		printf("%c\n", ascii);
 	else
 	{

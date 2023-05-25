@@ -15,11 +15,8 @@ void pchar(stack_t **head, unsigned int line)
 	}
 
 	ascii = (*head)->n;
-	if (ascii >= 0 && ascii <= 255)
-	{
-		putchar(ascii);
-		putchar('\n');
-	}
+	if (ascii >= 0 && ascii <= 127)
+		printf("%c\n", ascii);
 	else
 	{
 		fprintf(stderr, "L%d: can't pchar, value out of range,\n",
